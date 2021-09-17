@@ -5,7 +5,7 @@ import com.trinh.bookmanager.models.Book;
 public class DBBookQueries {
 
 	public static String getBook() {
-		return "select * from SanPham order by TenSP DESC";
+		return "select * from SanPham order by ID DESC";
 	}
 
 	public static String getGenre() {
@@ -13,7 +13,6 @@ public class DBBookQueries {
 	}
 
 	public static String insertBook(Book b) {
-		// %t
 		return String.format(
 				"INSERT INTO SanPham(TenSP, TacGia, MoTa, NgayPhatHanh, GiaTien, MaLoaiSP, AnhMinhHoa) "
 						+ "VALUES ('%s','%s','%s','%s', %d, '%s', '%s')",
@@ -28,20 +27,20 @@ public class DBBookQueries {
 	public static String getWebUserByUsernameAndPassword(String tentaikhoan, String matkhau) {
 		return String.format("select * from TaiKhoan where TenTaiKhoan='%s' and MatKhau='%s'", tentaikhoan, matkhau);
 	}
-//
-//	public static String updateCity(Book b) {
-//		// UPDATE city SET Name='...' , CountryCode='...', Country='...',
-//		// Population=.... WHERE id = ....
-//		return String.format(
-//				"UPDATE city SET Name='%s' , CountryCode='%s', Country='%s', Population=%d, imageUrl='%s' WHERE id =%d",
-//				c.getName(), c.getCountryCode(), c.getCountry(), c.getPopulation(), c.getImageUrl(), c.getId());
-//	}
-//
-//	public static String loadCity(String cityId) {
-//		return "select * from city where id=" + cityId;
-//	}
-//
-//	public static String deleteCity(String cityId) {
-//		return "delete from city where id=" + cityId;
-//	}
+
+	public static String updateBook(Book b) {
+		return String.format("UPDATE SanPham "
+				+ "SET TenSP='%s', TacGia='%s', MoTa='%s', NgayPhatHanh='%s', GiaTien=%d, MaLoaiSP='%s', AnhMinhHoa='%s' "
+				+ "WHERE ID =%d", b.getTenSP(), b.getTacGia(), b.getMoTa(), b.getNgayPhatHanh(), b.getGiaTien(),
+				b.getMaLoaiSP(), b.getAnhMinhHoa(), b.getID());
+
+	}
+
+	public static String loadBook(String bookId) {
+		return "select * from SanPham where ID=" + bookId;
+	}
+
+	public static String deleteBook(String bookId) {
+		return "delete from SanPham where ID=" + bookId;
+	}
 }

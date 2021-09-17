@@ -50,22 +50,13 @@ td {
 	<c:import url="../header.jsp" />
 	<main class="l-main">
 		<c:choose>
-			<c:when test="${sessionScope.authorized_user == null}">
-				<c:redirect url="../login.jsp?dest=Protected/listGenres" />
-			</c:when>
-			<c:when test="${sessionScope.authorized_user.authLevel < 1}">
-				<c:redirect url="../login.jsp?dest=Protected/listGenress" />
-			</c:when>
-			<c:when test="${sessionScope.authorized_user.tenDangNhap == null}">
-				<c:redirect url="../login.jsp?dest=Protected/listGenres" />
-			</c:when>
 			<c:when test="${sessionScope.genreData == null}">
 				<c:redirect url="../getgenredata.do" />
 			</c:when>
 			<c:otherwise>
 				<h1>
 					<c:out
-						value="Welcome back ${sessionScope.authorized_user.tenDangNhap}" />
+						value="Welcome back ${sessionScope.authorized_user.tenTaiKhoan}" />
 				</h1>
 			</c:otherwise>
 		</c:choose>

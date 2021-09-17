@@ -59,7 +59,9 @@ td {
 	background-color: transparent;
 	border: 2px solid #ff9cae;
 }
-
+td img{
+	width: 100px
+}
 </style>
 </head>
 <body>
@@ -67,7 +69,7 @@ td {
 	<main class="l-main">
 		<c:choose>
 			<c:when test="${sessionScope.bookData == null}">
-				<c:redirect url="../getbookdata.do" />
+				<c:redirect url="../bookcontroller.do" />
 			</c:when>
 			<c:otherwise>
 				<h1>
@@ -78,7 +80,10 @@ td {
 		</c:choose>
 
 
-		<a class="btn-primary" href="${initParam.hostURL}${pageContext.request.contextPath}/Protected/addBook.jsp">Add book here</a>
+		<c:if test="${sessionScope.authorized_user.authLevel eq 2}">
+			<a class="btn-primary" href="${initParam.hostURL}${pageContext.request.contextPath}/Protected/addBook.jsp">Add book here</a>
+		</c:if>
+		
 		<section class="ftco-section">
 			<div class="container">
 				<div class="row justify-content-center">
@@ -101,11 +106,19 @@ td {
 										<th>Mã Loại</th>
 										<th>Ảnh minh họa</th>
 										<th>Chỉnh sửa</th>
+										<th>Xóa</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="tempBook" items="${sessionScope.bookData}"
-										varStatus="iterationCount">
+									<c:forEach var="tempBook" items="${sessionScope.bookData}" varStatus="iterationCount">
+										<c:url var="updateLink" value="${initParam.hostURL}${pageContext.request.contextPath}/bookcontroller.do">
+				                            <c:param name="command" value="LOAD" />
+				                            <c:param name="bookId" value="${tempBook.ID}" />
+	                        			</c:url>
+				                        <c:url var="deleteLink" value="${initParam.hostURL}${pageContext.request.contextPath}/bookcontroller.do">
+				                            <c:param name="command" value="DELETE" />
+				                            <c:param name="bookId" value="${tempBook.ID}" />
+				                        </c:url>
 										<tr class="bg-primary">
 											<td>${tempBook.ID}</td>
 											<td>${tempBook.tenSP}</td>
@@ -116,8 +129,9 @@ td {
 											<c:set var="price" value="${tempBook.giaTien}" />
 											<td><fmt:formatNumber type="number" maxFractionDigits = "3" value="${price}"/>VND</td>
 											<td>${tempBook.maLoaiSP}</td>
-											<td>${tempBook.anhMinhHoa}</td>
-											<td><a href="#"><i class="fa fa-edit"></i></a></td>
+											<td><img src="${initParam.hostURL}${pageContext.request.contextPath}/FileDisplayServlet/${tempBook.anhMinhHoa}"></td>
+											<td><a href="${updateLink}"><i class="fa fa-edit"></i></a></td>
+											<td><a href="${deleteLink}" onclick="if(!confirm('Are you chắc chưa?')) return false;"><i class="fa fa-trash-o"></i></a></td>
 										</tr>
 									</c:forEach>
 								</tbody>

@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-<title>Add City</title>
+<title>Add Book</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
 	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
@@ -637,12 +638,17 @@ input[type="checkbox"]:focus {
 
 .tm-product-img-dummy {
 	max-width: 100%;
-	height: 240px;
+	height: 427px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	color: #fff;
 	background: #aaa;
+}
+.tm-product-img-dummy img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .tm-product-img-edit {
@@ -718,6 +724,9 @@ input[type="checkbox"]:focus {
 .tm-footer-link:hover, .tm-footer-link:focus {
 	color: #aacbea;
 }
+.mb-00{
+	margin-bottom: 0px;
+}
 </style>
 </head>
 <body>
@@ -746,19 +755,22 @@ input[type="checkbox"]:focus {
 
 						<form method="post" action="../bookcontroller.do"
 							class="tm-edit-product-form">
-							<input type="hidden" name="command" value="ADD" />
+							<input type="hidden" name="command" value="UPDATE" />
+							<input type="hidden" name="bookId" value="${theBook.ID}" />
 							<div class="row tm-edit-product-row">
 								<div class="col-xl-6 col-lg-6 col-md-12">
 									<div class="form-group mb-3">
 										<label for="name">Tên Sản Phẩm </label> 
 										<input id="tenSP"
-											name="tenSP" type="text" class="form-control validate">
-										<label for="name">Tác giả </label> <input id="tacgia"
-											name="tacGia" type="text" class="form-control validate">
+											name="tenSP" type="text" value="${theBook.tenSP}" class="form-control validate" >
+										<label for="name">Tác giả </label> 
+										<input id="tacgia"
+											name="tacGia" type="text" value="${theBook.tacGia}" class="form-control validate">
 									</div>
 									<div class="form-group mb-3">
 										<label for="description">Mô tả</label>
-										<textarea name="moTa" class="form-control validate" rows="3">
+										<textarea name="moTa" class="form-control" rows="3">
+										${theBook.moTa}
 										</textarea>
 									</div>
 									<div class="form-group mb-3">
@@ -766,8 +778,8 @@ input[type="checkbox"]:focus {
 										<select
 											name="maLoaiSP" class="custom-select tm-select-accounts"
 											id="category">
-											<option selected>Chọn Loại</option>
-											<c:forEach items="${sessionScope.MaLoaiSP}" var="maLoai">
+											<option selected>${theBook.maLoaiSP}</option>
+											<c:forEach items="${sessionScope.maLoaiSP}" var="maLoai">
 												<option>${maLoai}</option>
 											</c:forEach>
 										</select>
@@ -777,39 +789,35 @@ input[type="checkbox"]:focus {
 											<label for="expire_date">Ngày Phát hành </label> 
 											<input
 												id="dateTime" name="ngayPhatHanh" type="text"
+												value="${theBook.ngayPhatHanh}"
 												class="form-control validate hasDatepicker"
 												data-large-mode="true">
 										</div>
 										<div class="form-group mb-3 col-xs-12 col-sm-6">
 											<label for="stock">Giá Tiền </label> 
 											<input id="stock"
-												name="giaTien" type="text" class="form-control validate">
+												   name="giaTien" 
+												   type="text" 
+												   value="${theBook.giaTien}"
+												   class="form-control validate">
 										</div>
 									</div>
 
 
 								</div>
 								<div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-									<div class="form-group mb-3">
+								<div class="form-group mb-00">
 										<label for="name">Ảnh Minh Họa</label> 
 									</div>
 									<div class="tm-product-img-dummy mx-auto">
-										<i class="fas fa-cloud-upload-alt tm-upload-icon"
-											onclick="document.getElementById('fileInput').click();"></i>
+										<img alt="NONE" src="${initParam.hostURL}${pageContext.request.contextPath}/FileDisplayServlet/${theBook.anhMinhHoa}">
 									</div>
 									<div class="custom-file mt-3 mb-3">
-										<input id="fileInput" name="anhMinhHoa" type="file"
-											style="display: none;"> 
-										<input type="button"
-											class="btn btn-primary btn-block mx-auto"
-											value="UPLOAD PRODUCT IMAGE"
-											onclick="document.getElementById('fileInput').click();">
+										<a class="btn btn-primary btn-block mx-auto" href="${initParam.hostURL}${pageContext.request.contextPath}/uploader.jsp">Change</a>
 									</div>
 								</div>
 								<div class="col-12">
-									<button name="addBook" type="submit"
-										class="btn btn-primary btn-block text-uppercase">Add
-										Sách</button>
+									<button name="updateBook" type="submit" class="btn btn-primary btn-block text-uppercase">Update Sách</button>
 								</div>
 							</div>
 						</form>

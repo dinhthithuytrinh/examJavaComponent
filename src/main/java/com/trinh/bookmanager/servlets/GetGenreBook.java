@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.trinh.bookmanager.dbmodels.DBManager;
 import com.trinh.bookmanager.helpers.DBBookQueries;
+import com.trinh.bookmanager.models.WebUser;
 
 /**
  * Servlet implementation class GetGenreBook
@@ -31,18 +32,16 @@ public class GetGenreBook extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession s = request.getSession();
 
-//        if (s.getAttribute("authorized_user") == null) {
-//            response.sendRedirect(getServletContext().getInitParameter("hostURL")
-//                    + getServletContext().getContextPath() + "/login.jsp");
-//            return;
-//        } else {
-//            WebUser wu = (WebUser) s.getAttribute("authorized_user");
-//            if (wu.getAuthLevel() < 2) {
-//                response.sendRedirect(getServletContext().getInitParameter("hostURL")
-//                        + getServletContext().getContextPath() + "/login.jsp");
-//                return;
-//            }
-//        }
+		if (s.getAttribute("authorized_user") == null) {
+			response.sendRedirect(getServletContext().getContextPath() + "/login.jsp");
+			return;
+		} else {
+			WebUser wu = (WebUser) s.getAttribute("authorized_user");
+			if (wu.getAuthLevel() < 2) {
+				response.sendRedirect(getServletContext().getContextPath() + "/login.jsp");
+				return;
+			}
+		}
 
 		if (getServletConfig().getServletContext().getAttribute("BookDBManager") != null) {
 			DBManager dbm = (DBManager) getServletConfig().getServletContext().getAttribute("BookDBManager");

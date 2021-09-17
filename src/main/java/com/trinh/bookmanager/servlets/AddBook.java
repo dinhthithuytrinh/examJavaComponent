@@ -50,8 +50,7 @@ public class AddBook extends HttpServlet {
 					|| giatien.equals("") || maloaisp == null || maloaisp.equals("") || anhminhhoa == null
 					|| anhminhhoa.equals("")) {
 
-				response.sendRedirect(getServletContext().getInitParameter("hostURL")
-						+ getServletContext().getContextPath() + "/Protected/addBook.jsp");
+				response.sendRedirect(getServletContext().getContextPath() + "/Protected/addBook.jsp");
 			}
 
 			try {

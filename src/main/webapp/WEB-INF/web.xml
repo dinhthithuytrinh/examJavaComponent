@@ -34,15 +34,22 @@
 	</context-param>
 
 	<error-page>
-       <error-code>404</error-code>
-       <location>/errorHandler.jsp</location>
-   </error-page>
-   <error-page>
-       <error-code>500</error-code>
-       <location>/errorHandler.jsp</location>
-   </error-page>
+		<error-code>404</error-code>
+		<location>/errorHandler.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/errorHandler.jsp</location>
+	</error-page>
 
-
+	<context-param>
+		<param-name>hostURL</param-name>
+		<param-value>http://localhost:8080</param-value>
+	</context-param>
+	<context-param>
+        <param-name>uploadPath</param-name>
+        <param-value>C:/Users/Admin/thuytrinh/javaExamImg/</param-value>
+    </context-param>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

@@ -36,10 +36,10 @@ public class AuthorizationFilter implements Filter {
 
 		String dest = req.getServletContext().getContextPath() + "/login.jsp";
 
-		if (req.getRequestURI().toLowerCase().contains("cit")) {
+		if (req.getRequestURI().toLowerCase().contains("books")) {
 			dest = dest + "?dest=Protected/listBooks.jsp";
-		} else if (req.getRequestURI().toLowerCase().contains("books")) {
-			dest = dest + "?dest=Protected/listBooks.jsp";
+		} else if (req.getRequestURI().toLowerCase().contains("genres")) {
+			dest = dest + "?dest=Protected/listGenres.jsp";
 		}
 
 		if (s.getAttribute("authorized_user") == null) {
