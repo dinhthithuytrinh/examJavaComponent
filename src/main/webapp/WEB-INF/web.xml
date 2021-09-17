@@ -3,21 +3,12 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	id="WebApp_ID" version="4.0">
-	<display-name>CityManager</display-name>
-	<servlet>
-		<servlet-name>servletparameters</servlet-name>
-		<servlet-class>day2.citymanager.servlets.ServletParameters</servlet-class>
-		<init-param>
-			<param-name>secretCode</param-name>
-			<param-value>111-11-1111</param-value>
-		</init-param>
-	</servlet>
+	<display-name>BookManager</display-name>
 
-	<servlet-mapping>
-		<servlet-name>servletparameters</servlet-name>
-		<url-pattern>/servletparameters.do</url-pattern>
-	</servlet-mapping>
-
+	<context-param>
+		<param-name>dbURL</param-name>
+		<param-value>jdbc:mysql://localhost/bookmanager</param-value>
+	</context-param>
 	<context-param>
 		<param-name>dbuserid</param-name>
 		<param-value>root</param-value>
@@ -33,16 +24,26 @@
 		<param-value>bookmanager</param-value>
 	</context-param>
 
-
 	<context-param>
-		<param-name>initialSeed</param-name>
-		<param-value>2</param-value>
+		<param-name>copyright</param-name>
+		<param-value>2021 by TrinhXu</param-value>
+	</context-param>
+	<context-param>
+		<param-name>weblink</param-name>
+		<param-value>/index.jsp/</param-value>
 	</context-param>
 
-	<!-- <session-config> <session-timeout>20</session-timeout> <cookie-config> 
-		<max-age>21</max-age> </cookie-config> <tracking-mode>COOKIE</tracking-mode> 
-		</session-config> -->
+	<error-page>
+       <error-code>404</error-code>
+       <location>/errorHandler.jsp</location>
+   </error-page>
+   <error-page>
+       <error-code>500</error-code>
+       <location>/errorHandler.jsp</location>
+   </error-page>
+
+
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>

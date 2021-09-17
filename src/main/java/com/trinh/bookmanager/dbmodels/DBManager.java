@@ -1,4 +1,4 @@
-package com.trinh.bookmanager.models;
+package com.trinh.bookmanager.dbmodels;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

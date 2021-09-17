@@ -1,4 +1,4 @@
-package com.trinh.bookmanager.models;
+package com.trinh.bookmanager.dbmodels;
 
 public class DBUserInfo {
 	private String uid;
