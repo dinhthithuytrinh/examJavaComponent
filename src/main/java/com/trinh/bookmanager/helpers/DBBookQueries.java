@@ -25,9 +25,9 @@ public class DBBookQueries {
 		return "select MaLoaiSP from LoaiSanPham order by MaLoaiSP";
 	}
 
-//	public static String getWebUserByUsernameAndPassword(String username, String password) {
-//		return String.format("select * from webUser where uid='%s' and password='%s'", username, password);
-//	}
+	public static String getWebUserByUsernameAndPassword(String tentaikhoan, String matkhau) {
+		return String.format("select * from TaiKhoan where TenTaiKhoan='%s' and MatKhau='%s'", tentaikhoan, matkhau);
+	}
 //
 //	public static String updateCity(Book b) {
 //		// UPDATE city SET Name='...' , CountryCode='...', Country='...',

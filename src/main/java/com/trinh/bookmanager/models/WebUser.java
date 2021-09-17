@@ -1,7 +1,7 @@
 package com.trinh.bookmanager.models;
 
 public class WebUser {
-	private String tenDangNhap;
+	private String tenTaiKhoan;
 	private String matKhau;
 	private String email;
 	private String hoTen;
@@ -10,12 +10,12 @@ public class WebUser {
 	public WebUser() {
 	}
 
-	public String getTenDangNhap() {
-		return tenDangNhap;
+	public String getTenTaiKhoan() {
+		return tenTaiKhoan;
 	}
 
-	public void setTenDangNhap(String tenDangNhap) {
-		this.tenDangNhap = tenDangNhap;
+	public void setTenTaiKhoan(String tenTaiKhoan) {
+		this.tenTaiKhoan = tenTaiKhoan;
 	}
 
 	public String getMatKhau() {
@@ -52,7 +52,7 @@ public class WebUser {
 
 	@Override
 	public String toString() {
-		return "WebUser [tenDangNhap=" + tenDangNhap + ", matKhau=" + matKhau + ", email=" + email + ", hoTen=" + hoTen
+		return "WebUser [tenTakKhoan=" + tenTaiKhoan + ", matKhau=" + matKhau + ", email=" + email + ", hoTen=" + hoTen
 				+ ", authLevel=" + authLevel + "]";
 	}
 

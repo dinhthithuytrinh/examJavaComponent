@@ -76,8 +76,8 @@ button:hover {
 			<div class="container">
 				<label for="uname"><b>UserName</b></label>
 				<input type="text"
-					placeholder="Enter Username" name="tendangnhap"
-					value="${cookie.credentials_tdn.value}" required> 
+					placeholder="Enter Username" name="tentaikhoan"
+					value="${cookie.credentials_ttk.value}" required> 
 				<label for="psw"><b>Password</b></label>
 				<input type="password" placeholder="Enter Password" name="matkhau"
 					value="${cookie.credentials_pwd.value}" required> 

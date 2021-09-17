@@ -72,7 +72,7 @@ td {
 			<c:otherwise>
 				<h1>
 					<c:out
-						value="Welcome back ${sessionScope.authorized_user.tenDangNhap}" />
+						value="Welcome back ${sessionScope.authorized_user.tenTaiKhoan}" />
 				</h1>
 			</c:otherwise>
 		</c:choose>
