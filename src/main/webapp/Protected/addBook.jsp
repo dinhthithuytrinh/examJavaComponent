@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-<title>Add City</title>
+<title>Add Book</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
 	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
@@ -790,10 +790,12 @@ input[type="checkbox"]:focus {
 
 								</div>
 								<div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-									<div class="form-group mb-3">
+								<div class="form-group mb-3">
 										<label for="name">Ảnh Minh Họa</label> 
+										<input id="anh"
+											name="anhMinhHoa" type="text" class="form-control validate">
 									</div>
-									<div class="tm-product-img-dummy mx-auto">
+									<!-- <div class="tm-product-img-dummy mx-auto">
 										<i class="fas fa-cloud-upload-alt tm-upload-icon"
 											onclick="document.getElementById('fileInput').click();"></i>
 									</div>
@@ -804,7 +806,7 @@ input[type="checkbox"]:focus {
 											class="btn btn-primary btn-block mx-auto"
 											value="UPLOAD PRODUCT IMAGE"
 											onclick="document.getElementById('fileInput').click();">
-									</div>
+									</div> -->
 								</div>
 								<div class="col-12">
 									<button name="addBook" type="submit"

@@ -806,7 +806,7 @@ input[type="checkbox"]:focus {
 
 								</div>
 								<div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-								<div class="form-group mb-00">
+									<div class="form-group mb-00">
 										<label for="name">Ảnh Minh Họa</label> 
 									</div>
 									<div class="tm-product-img-dummy mx-auto">
